@@ -1,8 +1,4 @@
 ---
-- name: Configure all servers
-  hosts: all
-  become: yes
-
 - name: Configure UniFi Network Controller
   hosts: all
   become: yes
