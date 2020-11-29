@@ -4,7 +4,7 @@ Install and Deploy UniFi Network Controller for Soramitsu Khmer
 
 **Requirements**:
 - Ansible AWX or Ansible 2.10.3
-- Server: Ubuntu 20.04
+- Server: Ubuntu Server 20.04
 - CPU: 2 Cores
 - RAM: 4 GB
 
