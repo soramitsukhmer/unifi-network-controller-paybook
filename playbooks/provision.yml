@@ -23,7 +23,6 @@
     - name: Add specified repository into sources list using specified filename
       apt_repository:
         repo: deb https://www.ui.com/downloads/unifi/debian stable ubiquiti
-        filename: ubiquiti-unifi
         state: present
     - name: Add an apt key by id from a keyserver
       apt_key:
