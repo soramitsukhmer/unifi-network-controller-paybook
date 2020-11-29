@@ -1,0 +1,32 @@
+---
+- name: Configure all servers
+  hosts: all
+  become: yes
+
+- name: Configure UniFi Network Controller
+  become: yes
+  tasks:
+    - name: Install required packages
+      apt:
+        name:
+          - ca-certificates
+          - apt-transport-https
+          - openjdk-8-jre-headless
+        state: present
+    - name: Add specified repository into sources list using specified filename
+      apt_repository:
+        repo: deb https://www.ui.com/downloads/unifi/debian stable ubiquiti
+        filename: ubiquiti-unifi
+        state: present
+    - name: Add an apt key by id from a keyserver
+      apt_key:
+        keyserver: keyserver.ubuntu.com
+        id: 06E85760C0A52C50
+    - name: Install UniFi Network Controller
+      apt:
+        name: unifi
+        state: present
+    - name: Ensure UniFi Network Controller service has started
+      service:
+        name: unifi
+        state: started
