@@ -20,14 +20,14 @@
           - qemu-guest-agent
         state: present
         update_cache: yes
-    - name: Add specified repository into sources list using specified filename
-      apt_repository:
-        repo: deb https://www.ui.com/downloads/unifi/debian stable ubiquiti
-        state: present
     - name: Add an apt key by id from a keyserver
       apt_key:
         keyserver: keyserver.ubuntu.com
         id: 06E85760C0A52C50
+    - name: Add specified repository into sources list using specified filename
+      apt_repository:
+        repo: deb https://www.ui.com/downloads/unifi/debian stable ubiquiti
+        state: present
     - name: Install UniFi Network Controller
       apt:
         name: unifi
