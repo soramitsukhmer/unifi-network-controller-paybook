@@ -4,15 +4,22 @@
   become: yes
 
 - name: Configure UniFi Network Controller
+  hosts: all
   become: yes
   tasks:
+    - name: Run the equivalent of "apt-get upgrade/update" as a separate step
+      apt:
+        upgrade: safe
     - name: Install required packages
       apt:
         name:
+          - python3-pip
           - ca-certificates
           - apt-transport-https
           - openjdk-8-jre-headless
+          - qemu-guest-agent
         state: present
+        update_cache: yes
     - name: Add specified repository into sources list using specified filename
       apt_repository:
         repo: deb https://www.ui.com/downloads/unifi/debian stable ubiquiti
